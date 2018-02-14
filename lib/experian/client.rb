@@ -8,7 +8,6 @@ module Experian
       @raw_response = connection.post(body: request_body, headers: request_headers)
       raise Experian::Forbidden, "Invalid Experian login credentials" if invalid_login?
       @raw_response.body
-
     rescue Excon::Errors::SocketError => e
       raise Experian::ClientError, "Could not connect to Experian: #{e.message}"
     end
